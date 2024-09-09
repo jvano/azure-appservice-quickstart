@@ -1,0 +1,1 @@
+docker run -it --rm --isolation=hyperv -v c:\home:c:\home joaquinvcr.azurecr.io/reddog:4.8-windowsservercore-ltsc2022

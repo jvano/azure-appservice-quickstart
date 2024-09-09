@@ -1,0 +1,20 @@
+FROM mcr.microsoft.com/dotnet/framework/sdk:4.8.1-windowsservercore-ltsc2022 AS build-machine
+COPY /lib/ /lib/
+COPY /src/ /src/
+WORKDIR /src/
+RUN msbuild /p:Configuration=Release -r:False
+RUN mkdir C:\bin
+RUN powershell.exe -Command "& { Start-BitsTransfer -Source https://download.visualstudio.microsoft.com/download/pr/1d2b7547-8e25-4bd1-b74a-b64fa58b8d2b/d538ba128fd112d342efac95ba5b11141069b83c4574fde4b1d0db1fb774dbfe/MicrosoftAzureComputeEmulator-x64.exe -Destination C:\bin\MicrosoftAzureComputeEmulator-x64.exe }"
+RUN C:\bin\MicrosoftAzureComputeEmulator-x64.exe /extract C:\bin
+
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8.1-windowsservercore-ltsc2022 AS web-machine
+COPY --from=build-machine /bin/ /bin/
+COPY --from=build-machine /src/bin/Release/ /app/
+COPY index.html /inetpub/wwwroot/
+RUN dism /online /enable-feature:IIS-ManagementService /all
+RUN start /wait msiexec /i c:\bin\emulator.6496.fre.rd_sdk_stable_v2r9.210914-0539-x64.msi /qn
+RUN copy /Y "C:\app\" "C:\Program Files\Microsoft SDKs\Azure\Emulator\"
+ENV PORT 80
+ENV HOME C:\\home
+ENTRYPOINT ["C:\\Program Files\\Microsoft SDKs\\Azure\\Emulator\\CloudServiceBootstrapper.exe"]
+EXPOSE ${PORT} 
