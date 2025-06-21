@@ -1,0 +1,1 @@
+docker run -d --isolation=hyperv -v C:\app:C:\app joaquinvcr.azurecr.io/java:21-nanoserver-ltsc2022 java -jar /app/gRpcServer.jar

@@ -1,0 +1,10 @@
+FROM mcr.microsoft.com/windows/servercore:ltsc2022 AS build-machine
+RUN powershell.exe -Command "& { Start-BitsTransfer -Source https://aka.ms/download-jdk/microsoft-jdk-21.0.7-windows-x64.zip -Destination C:\microsoft-jdk-21.0.7-windows-x64.zip }"
+RUN powershell.exe -Command "& { Expand-Archive -Path C:\microsoft-jdk-21.0.7-windows-x64.zip -DestinationPath C:\ }"
+
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2022 AS web-machine
+COPY --from=build-machine /jdk-21.0.7+6/ /jdk-21.0.7+6/
+ENV JAVA_HOME C:\jdk-21.0.7+6
+USER "NT AUTHORITY\SYSTEM" 
+RUN setx /M PATH "%PATH%;C:\jdk-21.0.7+6\bin"
+
