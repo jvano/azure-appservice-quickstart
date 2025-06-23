@@ -1,0 +1,1 @@
+docker run -d --isolation=hyperv joaquinvcr.azurecr.io/dotnet:8.0-nanoserver-ltsc2022

@@ -1,0 +1,11 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0-nanoserver-ltsc2022 AS build-machine
+COPY . .
+RUN dotnet dev-certs https -ep app.pfx -p changeit
+RUN dotnet build -o C:\out C:\src\app.csproj
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-ltsc2022
+WORKDIR /bin
+COPY --from=build-machine /app.pfx /bin/
+COPY --from=build-machine /out/ /bin/
+EXPOSE 443
+ENTRYPOINT ["dotnet", "app.dll"]
