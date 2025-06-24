@@ -19,16 +19,11 @@ namespace dotnetapp
                 {
                     webBuilder.ConfigureKestrel(serverOptions =>
                     {
-                        serverOptions.ConfigureHttpsDefaults(httpsOptions =>
-                        {
-                            // Let OS to pick TLS version
-                            httpsOptions.SslProtocols = SslProtocols.None;
-                            httpsOptions.ServerCertificate = new X509Certificate2("app.pfx", "changeit");
-                        });
-
                         serverOptions.ListenAnyIP(port: 443, listenOptions =>
                         {
-                            listenOptions.UseHttps();
+                            var cert = new X509Certificate2("app.pfx", "changeit", X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+
+                            listenOptions.UseHttps(cert);
                             listenOptions.Protocols = HttpProtocols.Http2;
                         });
                     });
