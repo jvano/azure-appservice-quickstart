@@ -1,0 +1,33 @@
+PUT /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-WestUS3/providers/Microsoft.Web/sites/aspnet-http1-http2-tls?api-version=2024-11-01
+{
+    "location": "West US 3",
+    "tags": {
+        "hidden-related:/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-WestUS3/providers/Microsoft.Web/serverfarms/PV3ASP": "empty"
+    },
+    "properties": {
+    "name": "aspnet-http1-http2-tls",
+        "siteConfig": {
+            "http20Enabled":true,
+            "http20ProxyFlag":1,
+            "appSettings": [
+                {
+                    "name": "DOCKER_REGISTRY_SERVER_URL",
+                    "value": ""
+                },
+                {
+                    "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+                    "value": "joaquinvcr"
+                },
+                {
+                    "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+                    "value": "{password}"
+                }
+            ],
+            "appCommandLine": "",
+            "windowsFxVersion": "DOCKER|joaquinvcr.azurecr.io/dotnet:http1-http2-tls-8.0-nanoserver-ltsc2022"
+        },
+        "endToEndEncryptionEnabled":true,
+        "serverFarmId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-WestUS3/providers/Microsoft.Web/serverfarms/PV3ASP",
+        "hostingEnvironment": ""
+    }
+}
