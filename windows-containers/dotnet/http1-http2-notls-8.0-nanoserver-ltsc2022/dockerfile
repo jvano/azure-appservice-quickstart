@@ -1,0 +1,9 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0-nanoserver-ltsc2022 AS build-machine
+COPY . .
+RUN dotnet build -o C:\out C:\src\app.csproj
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-ltsc2022
+WORKDIR /bin
+COPY --from=build-machine /out/ /bin/
+EXPOSE 80
+ENTRYPOINT ["dotnet", "app.dll"]
