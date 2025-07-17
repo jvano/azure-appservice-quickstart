@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "GrpcServiceWin": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:55260;http://localhost:55261"
+    }
+  }
+}

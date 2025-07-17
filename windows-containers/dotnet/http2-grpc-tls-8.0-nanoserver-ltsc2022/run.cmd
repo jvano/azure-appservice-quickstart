@@ -1,0 +1,1 @@
+docker run -d --isolation=hyperv joaquinvcr.azurecr.io/dotnet:http2-grpc-tls-8.0-nanoserver-ltsc2022

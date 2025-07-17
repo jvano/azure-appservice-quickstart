@@ -1,0 +1,33 @@
+PUT /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-WestUS3/providers/Microsoft.Web/sites/aspnet-http2-grpc-tls?api-version=2024-11-01
+{
+    "location": "West US 3",
+    "tags": {
+        "hidden-related:/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-WestUS3/providers/Microsoft.Web/serverfarms/PV3ASP": "empty"
+    },
+    "properties": {
+    "name": "aspnet-http2-grpc-tls",
+        "siteConfig": {
+            "http20Enabled":true,
+            "http20ProxyFlag":2,
+            "appSettings": [
+                {
+                    "name": "DOCKER_REGISTRY_SERVER_URL",
+                    "value": ""
+                },
+                {
+                    "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+                    "value": "joaquinvcr"
+                },
+                {
+                    "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+                    "value": "{password}"
+                }
+            ],
+            "appCommandLine": "",
+            "windowsFxVersion": "DOCKER|joaquinvcr.azurecr.io/dotnet:http2-grpc-tls-8.0-nanoserver-ltsc2022"
+        },
+        "endToEndEncryptionEnabled":true,
+        "serverFarmId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-WestUS3/providers/Microsoft.Web/serverfarms/PV3ASP",
+        "hostingEnvironment": ""
+    }
+}
