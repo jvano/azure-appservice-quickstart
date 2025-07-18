@@ -8,7 +8,7 @@ PUT /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-W
     "name": "aspnet-http2-tls",
         "siteConfig": {
             "http20Enabled":true,
-            "http20ProxyFlag":2,
+            "http20ProxyFlag":1,
             "appSettings": [
                 {
                     "name": "DOCKER_REGISTRY_SERVER_URL",
