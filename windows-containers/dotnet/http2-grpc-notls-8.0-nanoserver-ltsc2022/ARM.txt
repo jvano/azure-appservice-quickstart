@@ -5,7 +5,7 @@ PUT /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-W
         "hidden-related:/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Default-Web-WestUS3/providers/Microsoft.Web/serverfarms/PV3ASP": "empty"
     },
     "properties": {
-    "name": "aspnet-grpc-tls",
+    "name": "aspnet-http2-grpc-notls",
         "siteConfig": {
             "http20Enabled":true,
             "http20ProxyFlag":2,
