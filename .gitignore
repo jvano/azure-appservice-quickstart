@@ -1,1 +1,7 @@
-windows-containers/reddog/src/.vs/** */
+# Build generated files
+/windows-containers/**/.vs/**/*
+/windows-containers/**/objd/**/*
+/windows-containers/**/obj/**/*
+/windows-containers/**/bin/**/*
+/windows-containers/**/gen/**/*
+/windows-containers/**/*.nuspec
